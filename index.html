@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>rock-paper-scissors</title>
 </head>
 <body>
@@ -12,15 +12,15 @@
         <h1>Rock Paper Scissors Game</h1>
     </div>
     <div class="main"> 
-        <div class="rock">
+        <div class="rock choice-box" data-choice="rock">
             <img width="220px" height="220px" src="images/Rock.jpg">
             <p>Rock</p>
         </div>
-        <div class="paper">
+        <div class="Paper choice-box" data-choice="paper">
             <img width="200px" height="200px" src="images/paper.jpeg">
             <p>Paper</p>
         </div>
-        <div class="scissor">
+        <div class="Scissor choice-box" data-choice="scissor">
             <img width="220px" height="220px" src="images/Scissor.png">
             <p>Scissor</p>
         </div>
@@ -30,21 +30,22 @@
         <div class="score">
         <div class="You">
             <h3>You</h3>
-            <p>1</p>
+            <p class="yourScore">0</p>
         </div>
         <div class="comp">
             <h3>Comp</h3>
-            <p>4</p>
+            <p class="compScore">0</p>
         </div>
         <div class="draw">
             <h3>Draws</h3>
-            <p>5</p>
+            <p class="drawScore">0</p>
         </div>
         </div>
     </div>
-    <div class="Message">
-        <p>You are Losing</p>
+    <div class="MessageBoard">
+        <p class="message">Click the icons to start playing </p>
     </div>
+    <button class="replay">Play Again!</button>
  
     <!-- <div class="container">
         <h1>
