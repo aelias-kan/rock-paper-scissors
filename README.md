@@ -1,21 +1,16 @@
-# rock-paper-scissors
-Rock Paper Scissors Console Edition
-I built this simple Rock, Paper, Scissors game using HTML, CSS, and JavaScript. 
-It’s a logic-based game where you play against a computer with random choice generator between rock paper scissor directly in your browser's console.
+# Rock-Paper-Scissors
+A browser-based Rock-Paper-Scissors game. This project transitions the classic game from a browser console application into a dynamic, state-driven User Interface.
+## 🎮 Live Demo
+[Play the game live on GitHub Pages](https://aelias-kan.github.io/rock-paper-scissors/) 
 
-How to Play
-Open index.html in your favorite browser.
-Open the Developer Console
-Right-click on the page and hit Inspect, then jump to the Console tab.
-Quick Shortcut: Ctrl + Shift + J (Windows) or Cmd + Option + J (Mac).
-Throw your move in the console,by typing eg play("rock") (You can also use "paper" or "scissor")
-Check the Score: After each round, the console will show you who won and give you an updated scoreboard.
-Type however you want: I made sure the game is case-insensitive. Whether you type "ROCK", "Rock", or "rock", it’ll work perfectly.
+Best of 5 Tournament: Implements a strict 5-round sequence. The final champion is calculated and crowned immediately on the 5th click.
+State-Lock Gatekeeper: Once the 5th round concludes, the gameplay engine dynamically freezes inputs to prevent score tampering until "Play Again" is selected.
+Dynamic Scoreboard: Real-time DOM manipulation tracks user wins, computer wins, and draws simultaneously.
+Event Delegation: Leverages a unified event listener on the container element using `.closest()` for optimized DOM performance.
 
-How I Built the Logic
-I broke the code down into a few main steps to keep it organized
-Handling input in the game takes whatever choice you type into the play() function.
-I used JavaScript to convert all input to lowercase so typos in casing don't break the game.
-I used Math.random() to let the computer pick a weapon from my array of choices.
-I wrote a conditional logic block that compares our moves and decides if it’s a win, loss, or a draw.
-Finally, the script logs the results and returns a status update so you know exactly where the score stands.
+The core engine relies on a synchronous, sequential state evaluation. Instead of decoupling the scoring and the match-termination checks, the application captures state variables downstream of the point allocation:
+
+Event Capture: User inputs are processed by evaluating data attributes (`data-choice`) mapped within a `switch` configuration.
+Gatekeeper Condition: Inside the engine, an evaluation gate enforces bounds checking:
+  ```javascript
+  if (roundCounter < 5) { // Processes actions exclusively for steps 1-5 }
